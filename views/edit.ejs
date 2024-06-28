@@ -1,0 +1,61 @@
+<%- include("partials/header.ejs") %>
+<%- include("partials/navigation.ejs") %>
+
+<body>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('assets/images/about-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>Have an Idea?</h1>
+                    <span class="subheading">Share your ideas with us!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>Create your post! 👇</p>
+                <div class="my-5"> 
+                    
+                    <% if(locals.array) { %>
+                    <form id="postform" data-sb-form-api-token="API_TOKEN" action="/submit" method="POST">
+                        <div class="form-floating">
+                            <input class="form-control" id="userName" type="text" placeholder="Enter your name..." data-sb-validations="required" name="userName" value=<%= array[0]["userName"] %> />
+                            <label for="userName">Enter your username</label>
+                            <div class="invalid-feedback" data-sb-feedback="name:required">A username is required.</div>
+                        </div>
+                        <div class="form-floating">
+                            <input class="form-control" id="title" type="text" placeholder="Enter your name..." data-sb-validations="required" name="pTitle" value=<%= array[0]["postTitle"] %> />
+                            <label for="title">Post Title</label>
+                            <div class="invalid-feedback" data-sb-feedback="name:required">A Title is required.</div>
+                        </div>
+                        <div class="form-floating">
+                            <input class="form-control" id="subtitle" type="text" placeholder="Enter your name..." data-sb-validations="required" name="subTitle" value=<%= array[0]["subTitle"] %> />
+                            <label for="subtitle">Post Subtitle</label>
+                            <div class="invalid-feedback" data-sb-feedback="name:required">A Subtitle is required.</div>
+                        </div>                        
+                        <div class="form-floating">
+                            <textarea class="form-control" id="message" placeholder="Enter your message here..." style="height: 12rem" data-sb-validations="required" name="pText" > <%= array[0]["postText"] %> </textarea>
+                            <label for="message">Post Text</label>
+                            <div class="invalid-feedback" data-sb-feedback="message:required">A text is required.</div>
+                        </div>
+                        <br />                      
+                        <!-- Submit Button-->
+                        <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Post</button>
+                    </form>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<%- include("partials/footer.ejs") %>
+</body>
+</html>
+
+

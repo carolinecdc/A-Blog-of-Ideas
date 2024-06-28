@@ -1,0 +1,87 @@
+<%- include("partials/header.ejs") %>
+
+<%- include("partials/navigation.ejs") %>
+
+<link rel="stylesheet" href="public/styles/styles.css">
+
+<body>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('assets/images/post-sample-image.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <% if (locals.array) { %>                        
+                            <h1> <%= array[0]["postTitle"] %></h1>
+                            <h2 class="subheading"> <%= array[0]["subTitle"] %></h2>
+                            <span class="meta">
+                                Posted by <%= array[0]["userName"] %> on <%= array[0]["date"] %>                  
+                        
+                            </span>
+                    <% } else { %>]
+                        <h1>Man must explore, and this is exploration at its greatest</h1>
+                        <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+                        <span class="meta">
+                            Posted by on August 24, 2023                 
+                    
+                        </span>
+                        <% } %>
+                                     
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <% if (locals.array[0]) { %>
+                    <% if (array[0]) { %>
+                    <p>
+                        <%= array[0]["postText"] %>
+                    </p>
+                    <% } else { %>
+                        <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, 
+                            a round earth in which all the directions eventually meet, 
+                            in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. 
+                            The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
+                    <% } %>  
+                <% } %>             
+                                  
+                </p>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!-- Divider-->
+<hr class="my-4" />
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">            
+            <div class="my-5 d-flex justify-content-between">                    
+                <form id="delete" action="/delete" method="POST">                                          
+                    <!-- Delete Button-->
+                    <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Delete</button>                    
+                </form>  
+
+                <form id="delete" action="/edit" method="POST"> 
+                     <!-- Edit Button-->
+                     <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Edit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<%- include("partials/footer.ejs") %>
+</body>
+</html>

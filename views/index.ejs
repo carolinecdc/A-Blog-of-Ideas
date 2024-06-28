@@ -1,0 +1,87 @@
+<%- include("partials/header.ejs") %>
+
+<%- include("partials/navigation.ejs") %>
+
+<body>  
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('/assets/images/home-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>Blog</h1>
+                        <span class="subheading">A Blog of Ideas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content-->
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <!-- Post preview-->                               
+
+                <% if (locals.array) { %>                                                                        
+
+                    <% if(array.length === 0) { %>
+                        <div class="post-preview">
+                            <a href="#!">
+                                <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
+                                <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+                            </a>
+                            <p class="post-meta">
+                                Posted by
+                                <a href="#!">Start Bootstrap</a>
+                                on September 24, 2023
+                            </p>
+                        </div>
+                        
+
+                    <% }else { %>                                              
+                        <% for (let i = 0; i < Math.min(4, array.length); i++ ){ %>  
+                                             
+                     
+                            <div class="post-preview">                                
+                                    <a href="/post/<%= i %>" >
+                                
+                                    <h2 class="post-title"> <%= array[i]["postTitle"] %> </h2>
+                                    <h3 class="post-subtitle"> <%= array[i]["subTitle"] %> </h3>
+                                </a>
+                                <p class="post-meta">
+                                    Posted by
+                                     <%= array[i]["userName"] %>
+                                    on <%= array[i]["date"] %>
+                                </p>
+                            </div>
+                            <%  } %>
+                    <% }  %>
+
+                        
+
+                <% }else { %>
+
+                    <div class="post-preview">
+                        <a href="#!">
+                            <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
+                            <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!">Start Bootstrap</a>
+                            on September 24, 2023
+                        </p>                    
+                <% } %>
+                </div>                
+              
+                <!-- Divider-->
+                <hr class="my-4" />
+                <!-- Pager-->
+                <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="/all-posts">Older Posts →</a></div>
+            </div>
+        </div>
+    </div>
+<%- include("partials/footer.ejs") %>      
+</body>
+</html>
+       
